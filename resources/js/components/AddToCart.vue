@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <button class="btn btn-warning">Add to Cart</button>
     </div>
 </template>
 
