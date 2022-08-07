@@ -22,3 +22,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/cart', [CartsController::class, 'store'])->name('cart');
+
+Route::get('/checkout', [CartsController::class, 'checkout'])->name('checkout');
+Route::get('/checkout/get/items', [CartsController::class, 'getItems'])->name('checkout.get.items');

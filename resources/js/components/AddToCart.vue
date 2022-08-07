@@ -8,7 +8,9 @@
 <script>
     export default {
         data(){
+            return{
 
+            }
         },
         props:[
             'productId',
@@ -33,7 +35,7 @@
             }
         },
         mounted(){
-            console.log("app is mounted")
+            
         }
     }
 </script>

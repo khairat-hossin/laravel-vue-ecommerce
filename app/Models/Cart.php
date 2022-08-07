@@ -19,4 +19,11 @@ class Cart extends Model
         'create_at',
         'updated_at'
     ];
+
+    /**
+     * Relationships with product
+     */
+    public function product(){
+        return $this->hasMany(Product::class, 'id', 'product_id');
+    }
 }

@@ -47,14 +47,8 @@
 </head>
 
 <body>
-
-
-
-
     <div id="app">
-
         <!--====== PRELOADER PART START ======-->
-
         <div class="preloader">
             <div class="spin">
                 <div class="cube1"></div>
@@ -70,7 +64,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">
+                        <nav class="navbar navbar-fixed-top navbar-expand-lg">
                             <a class="navbar-brand" href="index.html">
                                 <img src="assets/images/logo.png" alt="Logo">
                             </a> <!-- Logo -->
@@ -105,8 +99,7 @@
                                     <li class="nav-item">
                                         @if (Route::has('login'))
                                             @auth
-                                                <a href="{{ url('/home') }}"
-                                                    class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                                                <cart> </cart>
                                             @else
                                                 <a href="{{ route('login') }}"
                                                     class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
@@ -131,10 +124,6 @@
 
         @yield('content')
     </div>
-
-
-
-
 
     <!--====== FOOTER PART START ======-->
 
@@ -265,7 +254,11 @@
     <script src="assets/js/main.js"></script>
 
     @yield('scripts')
-
+    <script>
+        $(document).ready(function(){
+            $(this).scrollTop(0);
+        });
+    </script>
 
 </body>
 
