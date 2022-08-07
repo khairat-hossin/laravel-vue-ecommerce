@@ -1,7 +1,7 @@
 <template>
     <div>
         <li class="nav-item">
-            <a href="/checkout" class="btn btn-warning">Cart {{ itemCount }}</a>
+            <a href="/checkout" class="btn btn-sm btn-warning">Cart {{ itemCount }}</a>
         </li>
     </div>
 </template>
