@@ -12,8 +12,9 @@
     <!--====== Title ======-->
     <title>Furnish - Furniture and Decor Website Template</title>
 
-    <!-- Styles -->
-    <script src="{{ asset('css/app.css') }}" defer></script>
+    <!-- Scripts -->
+    {{-- <script src="{{ asset('css/app.css') }}" defer></script> --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
@@ -41,63 +42,68 @@
 
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="assets/css/responsive.css">
-
+    @yield('styles')
 
 </head>
 
 <body>
 
-    <!--====== PRELOADER PART START ======-->
 
-    <div class="preloader">
-        <div class="spin">
-            <div class="cube1"></div>
-            <div class="cube2"></div>
+
+
+    <div id="app">
+
+        <!--====== PRELOADER PART START ======-->
+
+        <div class="preloader">
+            <div class="spin">
+                <div class="cube1"></div>
+                <div class="cube2"></div>
+            </div>
         </div>
-    </div>
 
-    <!--====== PRELOADER PART START ======-->
+        <!--====== PRELOADER PART END ======-->
 
-    <!--====== HEADER PART START ======-->
+        <!--====== HEADER PART START ======-->
 
-    <header class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html">
-                            <img src="assets/images/logo.png" alt="Logo">
-                        </a> <!-- Logo -->
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="bar-icon"></span>
-                            <span class="bar-icon"></span>
-                            <span class="bar-icon"></span>
-                        </button>
+        <header class="header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html">
+                                <img src="assets/images/logo.png" alt="Logo">
+                            </a> <!-- Logo -->
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="bar-icon"></span>
+                                <span class="bar-icon"></span>
+                                <span class="bar-icon"></span>
+                            </button>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul id="nav" class="navbar-nav ml-auto">
-                                <li class="nav-item active">
-                                    <a data-scroll-nav="0" href="#home">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#product">Products</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#service">Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#showcase">Portfolio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#team">Team</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#blog">Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    @if (Route::has('login'))
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                                        <a data-scroll-nav="0" href="#home">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-scroll-nav="0" href="#product">Products</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-scroll-nav="0" href="#service">Services</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-scroll-nav="0" href="#showcase">Portfolio</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-scroll-nav="0" href="#team">Team</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-scroll-nav="0" href="#blog">Blog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        @if (Route::has('login'))
                                             @auth
                                                 <a href="{{ url('/home') }}"
                                                     class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
@@ -109,26 +115,27 @@
                                                         class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
                                                 @endif
                                             @endauth
-                                    @endif
-                                </li>
-                            </ul> <!-- navbar nav -->
-                        </div>
-                    </nav> <!-- navbar -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </header>
-    
-    <!--====== HEADER PART ENDS ======-->
+                                        @endif
+                                    </li>
+                                </ul> <!-- navbar nav -->
+                            </div>
+                        </nav> <!-- navbar -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </header>
 
-    <!--====== CONTENT PART STARTS ======-->
-    <div id="app">
+        <!--====== HEADER PART ENDS ======-->
+
+
+
         @yield('content')
     </div>
 
-    <!--====== CONTENT PART ENDS ======-->
 
-    
+
+
+
     <!--====== FOOTER PART START ======-->
 
     <section id="footer" class="footer-area">
@@ -230,12 +237,12 @@
 
 
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!--====== jquery js ======-->
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!--====== Bootstrap js ======-->
     <script src="assets/js/bootstrap.min.js"></script>
@@ -256,6 +263,9 @@
 
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
+
+    @yield('scripts')
+
 
 </body>
 

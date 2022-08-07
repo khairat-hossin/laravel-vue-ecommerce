@@ -1,5 +1,10 @@
 @extends('layouts.frontend')
+
+@section('styles')
+@endsection
 @section('content')
+
+
 
     <!--====== SLIDER PART START ======-->
 
@@ -20,12 +25,13 @@
                             <div class="col-lg-8 col-md-7">
                                 <div class="slider-product-content">
                                     <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s">
-                                        <span>Sofa</span> and <span>Armchairs</span></h1>
+                                        <span>Sofa</span> and <span>Armchairs</span>
+                                    </h1>
                                     <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">One day however a
                                         small line of blind text by the name of Lorem Ipsum <br> decided to leave for
                                         the far World of Grammar.</p>
-                                    <a class="main-btn" href="#" data-animation="fadeInUp"
-                                        data-delay="1.5s">Explore More <i class="lni-chevron-right"></i></a>
+                                    <a class="main-btn" href="#" data-animation="fadeInUp" data-delay="1.5s">Explore
+                                        More <i class="lni-chevron-right"></i></a>
                                 </div> <!-- slider product content -->
                             </div>
                         </div> <!-- row -->
@@ -46,12 +52,13 @@
                             <div class="col-lg-8 col-md-7">
                                 <div class="slider-product-content">
                                     <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s">
-                                        <span>Winter</span> Sale! is <span>Here</span></h1>
+                                        <span>Winter</span> Sale! is <span>Here</span>
+                                    </h1>
                                     <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">One day however a
                                         small line of blind text by the name of Lorem Ipsum <br> decided to leave for
                                         the far World of Grammar.</p>
-                                    <a class="main-btn" href="#" data-animation="fadeInUp"
-                                        data-delay="1.5s">Explore More <i class="lni-chevron-right"></i></a>
+                                    <a class="main-btn" href="#" data-animation="fadeInUp" data-delay="1.5s">Explore
+                                        More <i class="lni-chevron-right"></i></a>
                                 </div> <!-- slider product content -->
                             </div>
                         </div> <!-- row -->
@@ -72,12 +79,13 @@
                             <div class="col-lg-8 col-md-7">
                                 <div class="slider-product-content">
                                     <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s">
-                                        <span>Get</span> a Free <span>Quote</span></h1>
+                                        <span>Get</span> a Free <span>Quote</span>
+                                    </h1>
                                     <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">One day however a
                                         small line of blind text by the name of Lorem Ipsum <br> decided to leave for
                                         the far World of Grammar.</p>
-                                    <a class="main-btn" href="#contact" data-animation="fadeInUp"
-                                        data-delay="1.5s">Contact Us <i class="lni-chevron-right"></i></a>
+                                    <a class="main-btn" href="#contact" data-animation="fadeInUp" data-delay="1.5s">Contact
+                                        Us <i class="lni-chevron-right"></i></a>
                                 </div> <!-- slider product content -->
                             </div>
                         </div> <!-- row -->
@@ -143,13 +151,11 @@
                         <h4 class="collection-tilte">OUR COLLECTION</h4>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
-                            <a class="active" id="v-pills-furniture-tab" data-toggle="pill"
-                                href="#v-pills-furniture" role="tab" aria-controls="v-pills-furniture"
-                                aria-selected="true">Furniture</a>
+                            <a class="active" id="v-pills-furniture-tab" data-toggle="pill" href="#v-pills-furniture"
+                                role="tab" aria-controls="v-pills-furniture" aria-selected="true">Furniture</a>
 
-                            <a id="v-pills-decorative-tab" data-toggle="pill" href="#v-pills-decorative"
-                                role="tab" aria-controls="v-pills-decorative"
-                                aria-selected="false">Decorative</a>
+                            <a id="v-pills-decorative-tab" data-toggle="pill" href="#v-pills-decorative" role="tab"
+                                aria-controls="v-pills-decorative" aria-selected="false">Decorative</a>
 
                             <a id="v-pills-lighting-tab" data-toggle="pill" href="#v-pills-lighting" role="tab"
                                 aria-controls="v-pills-lighting" aria-selected="false">Lighting</a>
@@ -169,37 +175,36 @@
                             <div class="product-items mt-30">
                                 <div class="row product-items-active">
                                     @if (isset($products))
-                                     @foreach ($products as $product)
-                                     <div class="col-md-4">
-                                        <div class="single-product-items">
-                                            <div class="product-item-image">
-                                                <a href="#"><img src="{{ $product->image_name }}"
-                                                        alt="Product" style="height: 250px"></a>
-                                                <div class="product-discount-tag">
-                                                    <p>-50</p>
-                                                </div>
-                                            </div>
-                                            <div class="product-item-content text-center mt-30">
-                                                <h5 class="product-title"><a href="#">{{  $product->name }}</a></h5>
-                                                <ul class="rating">
-                                                    <li><i class="lni-star-filled"></i></li>
-                                                    <li><i class="lni-star-filled"></i></li>
-                                                    <li><i class="lni-star-filled"></i></li>
-                                                    <li><i class="lni-star-filled"></i></li>
-                                                </ul>
-                                                <span class="regular-price">{{ $product->price }}</span>
-                                                <span class="discount-price">{{ $product->sale_price }}</span>
-                                                <hr>
-                                                <add-to-cart></add-to-cart>
-                                            </div>
-                                        </div> <!-- single product items -->
-                                    </div>
-                                     @endforeach   
-                                    
-                                        
+                                        @foreach ($products as $product)
+                                            <div class="col-md-4">
+                                                <div class="single-product-items">
+                                                    <div class="product-item-image">
+                                                        <a href="#"><img
+                                                                src="{{ asset('assets/images/product/p-1.jpg') }}"
+                                                                alt="Product" style="height: 250px"></a>
+                                                        <div class="product-discount-tag">
+                                                            <p>-50</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item-content text-center mt-30">
+                                                        <h5 class="product-title"><a
+                                                                href="#">{{ $product->name }}</a></h5>
+                                                        <ul class="rating">
+                                                            <li><i class="lni-star-filled"></i></li>
+                                                            <li><i class="lni-star-filled"></i></li>
+                                                            <li><i class="lni-star-filled"></i></li>
+                                                            <li><i class="lni-star-filled"></i></li>
+                                                        </ul>
+                                                        <span class="regular-price">{{ $product->price }}</span>
+                                                        <span class="discount-price">{{ $product->sale_price }}</span>
 
+                                                        <add-to-cart product-id="{{ $product->id }}"  user-id="{{ Auth::user()->id ?? 0 }}"  />
+                                                    </div>
+                                                </div> <!-- single product items -->
+                                            </div>
+                                        @endforeach
                                     @endif
-                                    
+
                                 </div> <!-- row -->
                             </div> <!-- product items -->
                         </div> <!-- tab pane -->
@@ -1085,8 +1090,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="contact-form">
-                            <form id="contact-form" action="assets/contact.php" method="post"
-                                data-toggle="validator">
+                            <form id="contact-form" action="assets/contact.php" method="post" data-toggle="validator">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="single-form form-group">
@@ -1127,4 +1131,9 @@
     <!--====== CONTACT PART ENDS ======-->
 
 
-    @endsection
+
+@endsection
+
+
+@section('scripts')
+@endsection

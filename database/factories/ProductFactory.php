@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->text(100),
             'price' =>$price,
             'sale_price' => $price-($this->faker->numberBetween(10,50)),
-            'image_name' => $this->faker->imageUrl(140,300)
+            'image_name' => $this->faker->imageUrl($width=140, $height=300)
         ];
     }
 }
