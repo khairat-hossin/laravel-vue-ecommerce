@@ -18,6 +18,7 @@
         ],
         methods:{
             async addProductTOCart(){
+                // console.log("hello")
 
                 //Checking whether user is logged in or not
 
@@ -30,6 +31,7 @@
                 let response= await axios.post('/cart', {
                     'product_id': this.productId
                 });
+                
 
                 this.$root.$emit('changeInCart', response.data.items)
             }

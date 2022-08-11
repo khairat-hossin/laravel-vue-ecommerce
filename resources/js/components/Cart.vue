@@ -22,10 +22,12 @@
             async getCartItemOnPageLoad(){
                 let response = await axios.post('/cart');
                 this.itemCount= response.data.items;
+                 console.log(response.data.items);
             }
         },
         created(){
             this.getCartItemOnPageLoad();
+            // console.log("hello");
         }
     }
 </script>

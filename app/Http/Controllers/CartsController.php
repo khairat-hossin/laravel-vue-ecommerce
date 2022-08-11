@@ -6,7 +6,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Stripe;
 class CartsController extends Controller
 {
     /**
@@ -42,7 +42,7 @@ class CartsController extends Controller
 
     public function getItems(){
 
-        $cartItems= Cart::with('product')->where('user_id', 1)->get();
+        $cartItems= Cart::with('product')->where('user_id', Auth::user()->id)->get();
         $finaldata=[];
         $amount=0;
         if(isset($cartItems)){
@@ -70,7 +70,79 @@ class CartsController extends Controller
         return response()->json($finaldata);
     }
 
+    /** Process users payment */
 
+    public function processPayment(Request $request){
+
+        // return response()->json($request->all());
+        $address= $request->get('address');
+        $cardNumber= $request->get('cardNumber');
+        $cardType= $request->get('cardType');
+        $city= $request->get('city');
+        $country= $request->get('country');
+        $cvvNumber= $request->get('cvvNumber');
+        $emailAddress= $request->get('emailAddress');
+        $expMonth= $request->get('expMonth');
+        $expYear= $request->get('expYear');
+        $firstName= $request->get('firstName');
+        $lastName= $request->get('lastName');
+        $phone= $request->get('phone');
+        $phoneNumber= $request->get('phoneNumber');
+        $state= $request->get('state');
+        $zipCode= $request->get('zipCode');
+        $amount= $request->get('amount');
+
+
+        $stripe= Stripe::make(env('STRIPE_KEY'));
+        $token= $stripe->tokens()->create([
+            "card" =>[
+                'number' => $cardNumber,
+                'exp_month' => $expMonth,
+                'exp_year' => $expYear,
+                'cvc' => $cvvNumber
+            ]
+        ]);
+
+        if(!$token['id']){
+            session()->flash('error', 'Stripe Token generation failed!');
+            return;
+        }
+
+        // Create a Customer Stripe
+        $customer= $stripe->customers()->create([
+            'name' => $firstName." ".$lastName,
+            'email' => $emailAddress,
+            'phone' => $phoneNumber,
+            'address' =>[
+                'line1' => $address,
+                'postal_code' => $zipCode,
+                'city' => $city,
+                'state' => $state,
+                'country' => $country
+            ],
+            'shipping' => [
+                'name' => $firstName." ".$lastName,
+                'address' =>[
+                    'line1' => $address,
+                    'postal_code' => $zipCode,
+                    'city' => $city,
+                    'state' => $state,
+                    'country' => $country
+                ],
+            ],
+            'source' => $token['id']
+        ]);
+
+        // Code for charging the client in Stripe
+        $charge= $stripe->charges()->create([
+            'customer' => $customer['id'],
+            'currency' => 'USD',
+            'amount' => $amount,
+            'description' => 'Payment for Order'
+        ]);
+
+        return response()->json($charge);
+    }
 
     /**
      * Store a newly created resource in storage.

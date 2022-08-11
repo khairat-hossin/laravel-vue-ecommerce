@@ -25,3 +25,4 @@ Route::post('/cart', [CartsController::class, 'store'])->name('cart');
 
 Route::get('/checkout', [CartsController::class, 'checkout'])->name('checkout');
 Route::get('/checkout/get/items', [CartsController::class, 'getItems'])->name('checkout.get.items');
+Route::post('/process/user/payment', [CartsController::class, 'processPayment'])->name('process.user.payment');
